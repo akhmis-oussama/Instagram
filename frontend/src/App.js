@@ -1,4 +1,4 @@
-import React, { useEffect }  from 'react'
+import React, { useEffect, useState }  from 'react'
 import './App.css';
 import {BrowserRouter as Router,Routes,Route, Navigate} from 'react-router-dom'
 import Login from './Components/Login/Login';
@@ -18,6 +18,8 @@ import Explore from './Components/Explore/Explore';
 
 function App() {
 
+  const [message, setMessage] = useState("");
+
   //check if user is logined
   useEffect(()=>{
 
@@ -30,7 +32,11 @@ function App() {
 
   },[getTokenfromLocalStorage]) 
 
-
+  useEffect(() => {
+    fetch("https://instagram-service-appclone.onrender.com")
+      .then((res) => res.json())
+      .then((data) => setMessage(data.message));
+  },[]);
   
   return (
     <Router>
