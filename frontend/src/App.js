@@ -31,12 +31,6 @@ function App() {
     }
 
   },[getTokenfromLocalStorage]) 
-
-  useEffect(() => {
-    fetch("https://instagram-service-appclone.onrender.com")
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message));
-  },[]);
   
   return (
     <Router>
